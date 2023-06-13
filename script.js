@@ -19,6 +19,7 @@ const goToTob=() => window.scrollTo(0,0);
 
 // Convert RGB to Hex
 
+let array=[1,2,3]
 
 const rgbToHex = (r, g, b) =>
 "#" + ((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);
@@ -35,8 +36,23 @@ let last4Number=creditNumber.slice(-4);
 let maskedNumber = last4Number.padStart(creditNumber.length,"*");
 console. log(maskedNumber) ;
 
- 
+let x=[1,2,3];
+let y= x;
+y.pop();
+console.log(x); // [1,2]
 
 
- 
-
+    // Generate a list of unique nested objects and arrays
+    
+    const data = [...Array(1000).keys()].map(num => {
+        return { [num]: [{ num }] }}
+    )
+    console.log(data);
+        const deepClone = structuredClone(data)
+        console.log(deepClone);
+        
+        // const deepClone = JSON.parse(JSON.stringify(data) )
+
+
+
+
