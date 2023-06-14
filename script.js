@@ -1,4 +1,23 @@
 
+array=[10,21,13,40,5,6,7,8,9,10];
+//sort array
+console.log(array.sort((a,b)=> a-b));
+//unique array
+console.log(array.filter((a,index)=>array.indexOf(a)===index));
+//duplicate values
+console.log(array.filter((a,index)=>array.indexOf(a)!==index));
+//sum of an array
+console.log(array.reduce((acc,val)=>acc+val));
+//git max of array
+console.log(Math.max(...array));
+//get min of array
+console.log(Math.min(...array));
+//git odd number of values
+console.log(array.filter((el)=>el%2!==0));
+//get even number of values
+console.log(array.filter((el)=>el%2===0));
+
+
 // Capitalize first letter
 const Capitalize = (str) => str.charAt(0
     ).toUpperCase() + str.slice(1);
