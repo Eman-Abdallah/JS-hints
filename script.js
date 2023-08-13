@@ -161,8 +161,12 @@ const filters =["name","Age"];
 const jsonFiltered=JSON.stringify(employee1, filters);
 console.log(jsonFiltered); //{"name":"Eman","Age":34}
 
-//Currency format
-function formatCurrency(amount,currencyCode,local='en-Us'){
+
+function /* The `formatCurrency` function is a utility function that takes in three parameters:
+`amount`, `currencyCode`, and `local`. It uses the `Intl.NumberFormat` object to format the
+`amount` parameter as a currency value based on the specified `currencyCode` and `local`
+parameters. */
+formatCurrency(amount,currencyCode,local='en-Us'){
     return new Intl.NumberFormat( local, {
         style:'currency',
         currency:currencyCode
@@ -176,3 +180,24 @@ console.log(formatCurrency(45478.568,'EGP'));  //EGP 45,478.57
 console.log(formatCurrency(45478.568,'INR'));  //₹45,478.57
 console.log(formatCurrency(45478.568,'JPY'));  //¥45,479
 console.log(formatCurrency(45478.568,'SAR'));  //SAR 45,478.57
+
+// product free API
+fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+            // product category free API 
+fetch('https://fakestoreapi.com/products/categories')
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+            // cart of user free API
+fetch('https://fakestoreapi.com/carts?userId=1')
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+            //limited product free API
+fetch('https://fakestoreapi.com/products?limit=5')
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+// random user APi
+fetch('https://randomuser.me/api/')
+            .then(res=>res.json())
+            .then(json=>console.log(json.results[0]))
