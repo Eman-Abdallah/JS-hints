@@ -19,6 +19,12 @@ console.log(array.filter((el)=>el%2===0));
 
 
 // Capitalize first letter
+/**
+ * The function "Capitalize" takes a string as input and returns the same string with the first letter
+ * capitalized.
+ * @param str - The parameter `str` is a string that represents the sentence or phrase that you want to
+ * capitalize.
+ */
 const Capitalize = (str) => str.charAt(0
     ).toUpperCase() + str.slice(1);
     
@@ -39,6 +45,14 @@ const goToTob=() => window.scrollTo(0,0);
 // Convert RGB to Hex
 
 
+/**
+ * The function `rgbToHex` converts RGB values to a hexadecimal color code.
+ * @param r - The parameter `r` represents the red value in the RGB color model.
+ * @param g - The parameter "g" in the rgbToHex function represents the green value in the RGB color
+ * model. It determines the intensity of the green color in the final hex color code.
+ * @param b - The parameter `b` represents the blue value in the RGB color model. It determines the
+ * intensity of the blue color in the resulting hex code.
+ */
 const rgbToHex = (r, g, b) =>
 "#" + ((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);
 console.log(rgbToHex(24,0,255));
@@ -146,3 +160,19 @@ console.log(json); // {"name":"Eman","Age":34,"salary":5000}
 const filters =["name","Age"];
 const jsonFiltered=JSON.stringify(employee1, filters);
 console.log(jsonFiltered); //{"name":"Eman","Age":34}
+
+//Currency format
+function formatCurrency(amount,currencyCode,local='en-Us'){
+    return new Intl.NumberFormat( local, {
+        style:'currency',
+        currency:currencyCode
+    }).format(amount);
+}
+
+// Example
+console.log(formatCurrency(45478.568,'USD'));  //$45,478.57
+console.log(formatCurrency(45478.568,'EUR'));  //€45,478.57
+console.log(formatCurrency(45478.568,'EGP'));  //EGP 45,478.57
+console.log(formatCurrency(45478.568,'INR'));  //₹45,478.57
+console.log(formatCurrency(45478.568,'JPY'));  //¥45,479
+console.log(formatCurrency(45478.568,'SAR'));  //SAR 45,478.57
