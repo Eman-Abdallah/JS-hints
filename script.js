@@ -201,3 +201,18 @@ fetch('https://fakestoreapi.com/products?limit=5')
 fetch('https://randomuser.me/api/')
             .then(res=>res.json())
             .then(json=>console.log(json.results[0]))
+            console.log('location')
+/* The code is checking if the browser supports geolocation by checking if
+`window.navigator.geolocation` is truthy. If geolocation is supported, it calls the
+`getCurrentPosition` method to get the current position of the user. The position object contains
+the latitude and longitude coordinates, which are then logged to the console. If there is an error
+retrieving the position, the error is logged to the console as well. */
+if(window.navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(position=>{
+        const{latitude,longitude}=position.coords;
+        console.log(latitude,longitude);
+        fetchLocationName(latitude,longitude)
+    },err=>{
+        console.log(err);
+    })
+}
