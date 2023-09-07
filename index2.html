@@ -1,72 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script>
-        function getLocation() {
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition, showError);
-          } else {
-            console.log("Geolocation is not supported by this browser.");
-          }
-        }
-  
-        function showPosition(position) {
-          var latitude = position.coords.latitude;
-          var longitude = position.coords.longitude;
-  
-          console.log("Latitude: " + latitude);
-          console.log("Longitude: " + longitude);
-  
-          // Call your desired function or perform actions with the latitude and longitude values
-          getAddressFromLatLng(latitude, longitude)
-        }
-  
-        function showError(error) {
-          switch (error.code) {
-            case error.PERMISSION_DENIED:
-              console.log("User denied the request for Geolocation.");
-              break;
-            case error.POSITION_UNAVAILABLE:
-              console.log("Location information is unavailable.");
-              break;
-            case error.TIMEOUT:
-              console.log("The request to get user location timed out.");
-              break;
-            case error.UNKNOWN_ERROR:
-              console.log("An unknown error occurred.");
-              break;
-          }
-        }
-  
-        // Call the function to get the user's location
-        getLocation();
-        function getAddressFromLatLng(lat, lng) {
-        var nominatimUrl =
-          "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" +
-          lat +
-          "&lon=" +
-          lng;
 
-        axios
-          .get(nominatimUrl)
-          .then(function (response) {
-            var address = response.data.display_name;
-            handleAddress(address);
-          })
-          .catch(function (error) {
-            console.log("Error retrieving address:", error);
-          });
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        console.log("Geolocation is not supported by this browser.");
       }
+    }
 
-      function handleAddress(address) {
-        // Replace this code with your desired logic to handle the address
-        var addressElement = document.getElementById("address");
-        addressElement.textContent = address;
+    function showPosition(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+
+      console.log("Latitude: " + latitude);
+      console.log("Longitude: " + longitude);
+
+      // Call your desired function or perform actions with the latitude and longitude values
+      getAddressFromLatLng(latitude, longitude)
+    }
+
+    function showError(error) {
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          console.log("User denied the request for Geolocation.");
+          break;
+        case error.POSITION_UNAVAILABLE:
+          console.log("Location information is unavailable.");
+          break;
+        case error.TIMEOUT:
+          console.log("The request to get user location timed out.");
+          break;
+        case error.UNKNOWN_ERROR:
+          console.log("An unknown error occurred.");
+          break;
       }
-      </script>
-  </head>
-  <body>
-    <div id="address"></div>
-  </body>
+    }
+
+    // Call the function to get the user's location
+    getLocation();
+    function getAddressFromLatLng(lat, lng) {
+      var nominatimUrl =
+        "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" +
+        lat +
+        "&lon=" +
+        lng;
+
+      axios
+        .get(nominatimUrl)
+        .then(function (response) {
+          var address = response.data.display_name;
+          handleAddress(address);
+        })
+        .catch(function (error) {
+          console.log("Error retrieving address:", error);
+        });
+    }
+
+    function handleAddress(address) {
+      // Replace this code with your desired logic to handle the address
+      var addressElement = document.getElementById("address");
+      addressElement.textContent = address;
+    }
+  </script>
+</head>
+
+<body>
+  <div id="address"></div>
+</body>
+
 </html>

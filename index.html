@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
+        body {
             background-color: #864BBB;
         }
-        .box{
+
+        .box {
             background-color: aqua;
             width: 500px;
             height: 500px;
-          >  div{
+
+            >div {
                 background-color: brown;
                 width: 250px;
                 height: 250px;
-               &:hover{
+
+                &:hover {
                     background-color: blue;
                 }
             }
         }
-        .button{
+
+        .button {
             padding: 30px 60px;
-            outline:2px solid white;
-            color:#fff;
+            outline: 2px solid white;
+            color: #fff;
             position: relative;
             overflow: hidden;
             transition: color 1s;
@@ -33,16 +38,18 @@
             text-decoration: none;
             text-transform: uppercase;
             margin-top: 162px !important;
-    display: inline-block;
+            display: inline-block;
         }
-        .button:hover{
+
+        .button:hover {
             color: #864BBB;
         }
-        .button::after{
+
+        .button::after {
             content: '';
             background-color: #fff;
             position: absolute;
-            top:0;
+            top: 0;
             left: -50px;
             width: 0;
             height: 100%;
@@ -50,11 +57,13 @@
             z-index: -1;
             transition: width 1s;
         }
-        .button:hover::after{
+
+        .button:hover::after {
             width: 150%;
         }
     </style>
 </head>
+
 <body>
 
     <div class="box">
@@ -64,4 +73,5 @@
     <a href="#" class="button">Learn More</a>
     <script src="./script.js"></script>
 </body>
+
 </html>
