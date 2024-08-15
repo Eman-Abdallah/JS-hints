@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roman Numeral Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    #number {
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    #convert-btn {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #output {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Roman Numeral Converter</h1>
+
+  <label for="number">Enter a number:</label>
+  <input type="text" id="number">
+
+  <button id="convert-btn" onclick="convertToRoman()">Convert</button>
+
+  <div id="output"></div>
+
+  <script>
+    function convertToRoman() {
+      const numberInput = document.getElementById('number').value;
+      const outputElement = document.getElementById('output');
+
+      // Validate the input
+      if (!numberInput) {
+        outputElement.textContent = "Please enter a valid number";
+        return;
+      }
+
+     let number = parseInt(numberInput, 10);
+
+      if (isNaN(number) || number < 1) {
+        outputElement.textContent = "Please enter a number greater than or equal to 1";
+        return;
+      }
+
+      if (number >= 4000) {
+        outputElement.textContent = "Please enter a number less than or equal to 3999";
+        return;
+      }
+
+      // Conversion logic
+      const romanNumerals = [
+        ["M", 1000],
+        ["CM", 900],
+        ["D", 500],
+        ["CD", 400],
+        ["C", 100],
+        ["XC", 90],
+        ["L", 50],
+        ["XL", 40],
+        ["X", 10],
+        ["IX", 9],
+        ["V", 5],
+        ["IV", 4],
+        ["I", 1]
+      ];
+
+      let result = "";
+
+      for (let i = 0; i < romanNumerals.length; i++) {
+        while (number >= romanNumerals[i][1]) {
+          result += romanNumerals[i][0];
+          number -= romanNumerals[i][1];
+        }
+      }
+
+      // Display the result
+      outputElement.textContent = result;
+    }
+  </script>
+</body>
+</html>

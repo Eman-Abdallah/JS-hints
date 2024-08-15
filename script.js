@@ -208,14 +208,132 @@ console.log('location')
 `getCurrentPosition` method to get the current position of the user. The position object contains
 the latitude and longitude coordinates, which are then logged to the console. If there is an error
 retrieving the position, the error is logged to the console as well. */
-if (window.navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(position => {
-        const { latitude, longitude } = position.coords;
-        console.log(latitude, longitude);
-        fetchLocationName(latitude, longitude)
-    }, err => {
-        console.log(err);
-    })
-}
+// if (window.navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(position => {
+//         const { latitude, longitude } = position.coords;
+//         console.log(latitude, longitude);
+//         fetchLocationName(latitude, longitude)
+//     }, err => {
+//         console.log(err);
+//     })
+// }
+let xw= [1,2,3];
+let ww=xw.find(n=>n>1);
+console.log(ww);
 
-
+console.log(`age is - ${age}`) 
+var age = 40;
+// Create a function called randomRange that takes a range myMin 
+//and myMax and returns a random whole number that's greater than or 
+// equal to myMin and less than or equal to myMax.
+function randomRange(myMin, myMax) {
+
+    return Math.floor(Math.random() * (myMax - myMin + 1 )) + myMin;
+  }
+
+
+/**
+ * The function checks if a given string is a palindrome by removing non-alphanumeric characters,
+ * converting to lowercase, and comparing it to its reverse.
+ * @param str - The parameter `str` is a string that represents the word or phrase that we want to
+ * check if it is a palindrome.
+ * @returns a boolean value indicating whether the given string is a palindrome or not.
+ */
+  function palindrome(str) {
+    // Remove non-alphanumeric characters and convert to lowercase
+    const cleanedStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  
+    // Check if the cleaned string is equal to its reverse
+    return cleanedStr === cleanedStr.split('').reverse().join('');
+  }
+  
+  palindrome("eye");
+
+ /**
+  * The function `convertToRoman` takes a number as input and returns the corresponding Roman numeral
+  * representation of that number.
+  * @param num - The parameter `num` is a number that you want to convert to a Roman numeral.
+  * @returns The function `convertToRoman` returns a string representing the Roman numeral equivalent
+  * of the input number `num`.
+  */
+  function convertToRoman(num) {
+    const romanNumerals = [
+      { value: 1000, numeral: 'M' },
+      { value: 900, numeral: 'CM' },
+      { value: 500, numeral: 'D' },
+      { value: 400, numeral: 'CD' },
+      { value: 100, numeral: 'C' },
+      { value: 90, numeral: 'XC' },
+      { value: 50, numeral: 'L' },
+      { value: 40, numeral: 'XL' },
+      { value: 10, numeral: 'X' },
+      { value: 9, numeral: 'IX' },
+      { value: 5, numeral: 'V' },
+      { value: 4, numeral: 'IV' },
+      { value: 1, numeral: 'I' }
+    ];
+  
+    let result = '';
+  
+    for (let i = 0; i < romanNumerals.length; i++) {
+      while (num >= romanNumerals[i].value) {
+        result += romanNumerals[i].numeral;
+        num -= romanNumerals[i].value;
+      }
+    }
+  
+    return result;
+  }
+
+
+/**
+ * The `rot13` function takes a string as input and returns a decoded version of the string using the
+ * ROT13 cipher.
+ * @param str - "SERR PBQR PNZC"
+ * @returns The function `rot13` is returning the decoded string "FREE CODE CAMP".
+ */
+  function rot13(str) {
+    // Define a helper function to perform the rotation for a single character
+    function rotateChar(char) {
+      const charCode = char.charCodeAt(0);
+  
+      if (charCode >= 65 && charCode <= 90) {
+        // Rotate uppercase letters
+        return String.fromCharCode(((charCode - 65 + 13) % 26) + 65);
+      } else {
+        // Return non-alphabetic characters unchanged
+        return char;
+      }
+    }
+  
+    // Use the helper function to decode each character in the string
+    const decodedStr = str.split('').map(rotateChar).join('');
+   return decodedStr;
+  }
+  
+  rot13("SERR PBQR PNZC");
+
+
+/**
+ * The function `convertHTML` takes a string as input and replaces special characters with their
+ * corresponding HTML entities.
+ * @param str - The `str` parameter is a string that you want to convert to HTML entities.
+ * @returns The function `convertHTML` returns a string with special characters replaced by their
+ * corresponding HTML entities.
+ */
+  function convertHTML(str) {
+    // Define a map of special characters and their corresponding HTML entities
+   const htmlEntities = {
+     '&': '&amp;',
+     '<': '&lt;',
+     '>': '&gt;',
+     '"': '&quot;',
+     "'": '&apos;'
+   };
+ 
+   // Use replace with a regular expression to replace the characters
+   return str.replace(/[&<>"']/g, match => htmlEntities[match]);
+ }
+ 
+ 
+ convertHTML("Dolce & Gabbana");
